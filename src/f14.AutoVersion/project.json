@@ -1,0 +1,49 @@
+﻿{
+  "version": "1.0.0",
+  "authors": [ "f14shm4n" ],
+  "description": "Tool for auto-incrementing version of .Net Core app.",
+
+  "buildOptions": {
+    "debugType": "portable",
+    "emitEntryPoint": true,
+    "outputName": "dotnet-autover"
+  },
+
+  "packOptions": {
+    "owners": [ "f14shm4n" ],
+
+    "projectUrl": "https://github.com/f14shm4n/f14.CommonCore",
+    "iconUrl": "https://avatars2.githubusercontent.com/u/5340834?v=3&s=64",
+    "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.html",
+
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/f14shm4n/f14.CommonCore.git"
+    },
+
+    "tags": [
+      "aspnetcore",
+      ".netcore",
+      "netcore",
+      "version",
+      "autoversion",
+      "increment"
+    ]
+  },
+
+  "dependencies": {
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.0.0"
+    },
+    "Newtonsoft.Json": "9.0.1"
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": [
+        "dnxcore50"
+      ]      
+    }
+  }
+}
