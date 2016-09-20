@@ -3,6 +3,7 @@ This is small .Net Core CLI tool for auto-update build version of your project.
 
 ##CLI
 Command name: `dotnet autover`.
+
 Params:
 - `-backup` or short name `-b`: set this if you need to create backup of current project.json. File created each tool run.
 - `-template` or short name `-t` and *MUST BE SET AFTER PARAM* value `1.0.0-alpha-{00000}`. The variable part is enclosed in a brace.
@@ -34,7 +35,7 @@ Sample for *netstandard1.6*:
     "netstandard1.6": {
       "imports": [
         "dnxcore50",
-        "netcoreapp1.0"             <-- Add netcoreapp1 to import of project frameworks
+        "netcoreapp1.0"             <-- Add netcoreapp1.0 to import of project frameworks
       ]
     }
   }
@@ -46,3 +47,9 @@ To change version each time when you compile project add next (setup you format 
     "precompile": "dotnet autover -b -t 1.0.0-alpha-{00000}"
   }
 ```
+#### Behavior
+Current version in project.json = `1.0.0-aplha-00001`
+Expected result: `1.0.0-aplha-00002`
+
+Current version in project.json = `1.0.0-aplha-01356`
+Expected result: `1.0.0-aplha-01357`
