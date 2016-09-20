@@ -53,3 +53,7 @@ Expected result: `1.0.0-aplha-00002`
 
 Current version in project.json = `1.0.0-aplha-01356`
 Expected result: `1.0.0-aplha-01357`
+
+# About
+Owner and dev:
+* [f14shm4n](https://github.com/f14shm4n)
