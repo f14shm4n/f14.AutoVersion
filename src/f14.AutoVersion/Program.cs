@@ -18,6 +18,12 @@ namespace f14.AutoVersion
 
         public static void Main(string[] args)
         {
+            if (args.Length == 0)
+            {
+                PrintHelp();
+                return;
+            }
+
             try
             {
                 ParseArguments(args);
@@ -77,9 +83,7 @@ namespace f14.AutoVersion
         {
             if (_handlersToExecution.Count == 0)
             {
-                Console.WriteLine("How to use.");
-                foreach (var a in _registeredHandlers)
-                    Console.WriteLine($"Aliases: ${string.Join(",", a.Aliases)} Description: ${a.Description}");
+                PrintHelp();
                 return;
             }
 
@@ -90,6 +94,15 @@ namespace f14.AutoVersion
         #endregion
 
         #region Private
+
+        private static void PrintHelp()
+        {
+            Console.WriteLine("How to use.");
+            foreach (var a in _registeredHandlers)
+            {
+                Console.WriteLine($"Aliases: {string.Join(",", a.Aliases)} Description: {a.Description}");
+            }
+        }
         /// <summary>
         /// Get registered argument handler by command alias.
         /// </summary>

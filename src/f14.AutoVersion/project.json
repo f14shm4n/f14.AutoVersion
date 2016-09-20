@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [ "f14shm4n" ],
   "description": "Tool for auto-incrementing version of .Net Core app.",
 
