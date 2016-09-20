@@ -2,7 +2,7 @@
 This is small .Net Core CLI tool for auto-update build version of your project.
 
 ##CLI
-Command name: `dotnet autover`
+Command name: `dotnet autover`.
 Params:
 - `-backup` or short name `-b`: set this if you need to create backup of current project.json. File created each tool run.
 - `-template` or short name `-t` and *MUST BE SET AFTER PARAM* value `1.0.0-alpha-{00000}`. The variable part is enclosed in a brace.
@@ -28,13 +28,13 @@ Sample for *netstandard1.6*:
     "NETStandard.Library": "1.6.0"
   },
   "tools": {
-    "f14.AutoVersion": "1.0.0" // Add tool
+    "f14.AutoVersion": "1.0.0"      <-- Add tool
   },
   "frameworks": {
     "netstandard1.6": {
       "imports": [
         "dnxcore50",
-        "netcoreapp1.0" // <- Add netcoreapp1 to import of project frameworks
+        "netcoreapp1.0"             <-- Add netcoreapp1 to import of project frameworks
       ]
     }
   }
