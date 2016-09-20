@@ -1,4 +1,5 @@
-# f14.AutoVersion
+# f14.AutoVersion 
+## Version 1.0.0
 This is small .Net Core CLI tool for auto-update build version of your project.
 
 ##CLI
