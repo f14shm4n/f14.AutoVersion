@@ -23,7 +23,7 @@ namespace f14.AutoVersion.Core
             Value = value;
         }
 
-        public override void DoAction()
+        public override void Execute()
         {
             JObject projectJson = ReadProjectJson();
             ChangeVersion(projectJson);
@@ -52,25 +52,31 @@ namespace f14.AutoVersion.Core
             }
         }
 
+        /// <summary>
+        /// Change version in project.json.
+        /// </summary>
+        /// <param name="projectJson"></param>
         private void ChangeVersion(JObject projectJson)
         {
+            // Select template
             string template = Convert.ToString(Value);
             int start = template.IndexOf('{') + 1;
             int length = template.IndexOf('}') - start;
             string tmp = template.Substring(start, length);
+            // Create regex pattern for selecting actual version value from project.json
             string pattern = template.Replace("{" + tmp + "}", @"(?<ver>\d+)");
             Regex rgx = new Regex(pattern);
 
             string s_version = projectJson.Value<string>("version");
 
             var m = rgx.Match(s_version);
-            if (m.Success)
+            if (m.Success) // Change actual value
             {
                 int v = Convert.ToInt32(m.Groups["ver"].Value) + 1;
                 string new_version = template.Replace("{" + tmp + "}", v.ToString(tmp.Aggregate("", (t, n) => t += "0")));
                 projectJson["version"] = new_version;
             }
-            else
+            else // if current value is unformatted, format this, and set start version value
             {
                 string new_version = template.Replace("{" + tmp + "}", 1.ToString(tmp.Aggregate("", (t, n) => t += "0")));
                 projectJson["version"] = new_version;

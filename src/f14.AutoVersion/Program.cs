@@ -9,7 +9,7 @@ namespace f14.AutoVersion
 {
     public class Program
     {
-        private static ArgumentHandler[] _registredHandlers =
+        private static ArgumentHandler[] _registeredHandlers =
         {
             new BackupProjectJsonArgumentHandler(),
             new VersionTemplateArgumentHandler()
@@ -31,7 +31,7 @@ namespace f14.AutoVersion
 
             try
             {
-                DoActions();
+                ExecuteHandlers();
             }
             catch (Exception ex)
             {
@@ -41,12 +41,18 @@ namespace f14.AutoVersion
         }
 
         #region Public
-
+        /// <summary>
+        /// Parse arguments from string. Arguments must be separated by whitespace.
+        /// </summary>
+        /// <param name="args">Arguments string.</param>
         public static void ParseArguments(string args)
         {
             ParseArguments(args.Split(' '));
         }
-
+        /// <summary>
+        /// Parse arguments from array.
+        /// </summary>
+        /// <param name="args">Argument array.</param>
         public static void ParseArguments(string[] args)
         {
             for (int i = 0; i < args.Length; i++)
@@ -64,28 +70,34 @@ namespace f14.AutoVersion
                 }
             }
         }
-
-        public static void DoActions()
+        /// <summary>
+        /// Execute all argument handles which parsed from arguments array.
+        /// </summary>
+        public static void ExecuteHandlers()
         {
             if (_handlersToExecution.Count == 0)
             {
                 Console.WriteLine("How to use.");
-                foreach (var a in _registredHandlers)
+                foreach (var a in _registeredHandlers)
                     Console.WriteLine($"Aliases: ${string.Join(",", a.Aliases)} Description: ${a.Description}");
                 return;
             }
 
             _handlersToExecution.Sort();
-            _handlersToExecution.ForEach(x => x.DoAction());
+            _handlersToExecution.ForEach(x => x.Execute());
         }
 
         #endregion
 
         #region Private
-
+        /// <summary>
+        /// Get registered argument handler by command alias.
+        /// </summary>
+        /// <param name="alias"></param>
+        /// <returns></returns>
         private static ArgumentHandler GetArgumentHandler(string alias)
         {
-            return _registredHandlers.FirstOrDefault(x => x.Aliases.Any(xa => xa.Equals(alias, StringComparison.OrdinalIgnoreCase)));
+            return _registeredHandlers.FirstOrDefault(x => x.Aliases.Any(xa => xa.Equals(alias, StringComparison.OrdinalIgnoreCase)));
         }
 
         #endregion

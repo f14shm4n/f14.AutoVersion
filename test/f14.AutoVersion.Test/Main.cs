@@ -18,7 +18,7 @@ namespace f14.AutoVersion.Test
             {
                 VersionTemplateArgumentHandler vta = new VersionTemplateArgumentHandler();
                 vta.ParseValue(template);
-                vta.DoAction();
+                vta.Execute();
             }
             catch (Exception ex)
             {
@@ -48,7 +48,7 @@ namespace f14.AutoVersion.Test
             try
             {
                 BackupProjectJsonArgumentHandler bck = new BackupProjectJsonArgumentHandler();
-                bck.DoAction();
+                bck.Execute();
             }
             catch (Exception ex)
             {
@@ -66,7 +66,7 @@ namespace f14.AutoVersion.Test
             try
             {
                 Program.ParseArguments("-b -t 1.0.0-b{0}");
-                Program.DoActions();
+                Program.ExecuteHandlers();
             }
             catch (Exception ex)
             {

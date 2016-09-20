@@ -15,7 +15,7 @@ namespace f14.AutoVersion.Core
             Order = 1;
         }
 
-        public override void DoAction()
+        public override void Execute()
         {
             File.Copy("project.json", "project.json.bak", true);
         }
