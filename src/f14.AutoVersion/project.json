@@ -6,19 +6,23 @@
   "buildOptions": {
     "debugType": "portable",
     "emitEntryPoint": true,
-    "outputName": "dotnet-autover"
+    "outputName": "dotnet-autover",
+    "compile": {
+      "exclude": [
+        "*.ps1"
+      ]
+    }
   },
 
   "packOptions": {
     "owners": [ "f14shm4n" ],
 
-    "projectUrl": "https://github.com/f14shm4n/f14.CommonCore",
-    "iconUrl": "https://avatars2.githubusercontent.com/u/5340834?v=3&s=64",
+    "projectUrl": "https://github.com/f14shm4n/f14.AutoVersion",
     "licenseUrl": "http://www.apache.org/licenses/LICENSE-2.0.html",
 
     "repository": {
       "type": "git",
-      "url": "https://github.com/f14shm4n/f14.CommonCore.git"
+      "url": "https://github.com/f14shm4n/f14.AutoVersion.git"
     },
 
     "tags": [
@@ -43,7 +47,8 @@
     "netcoreapp1.0": {
       "imports": [
         "dnxcore50"
-      ]      
+      ]
     }
   }
+
 }

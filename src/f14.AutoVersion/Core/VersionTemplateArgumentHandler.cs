@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace f14.AutoVersion.Core
 {
-    public class VersionTemplateArgument : Argument
+    public class VersionTemplateArgumentHandler : ArgumentHandler
     {
-        public VersionTemplateArgument()
+        public VersionTemplateArgumentHandler()
         {
             Aliases = new string[] { "-template", "-t" };
             Description = "Set the application version template. Sample: 1.0.0-beta-{000000}.";

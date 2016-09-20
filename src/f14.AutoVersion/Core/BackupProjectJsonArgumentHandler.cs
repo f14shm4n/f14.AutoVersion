@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace f14.AutoVersion.Core
 {
-    public class BackupProjectJsonArgument : Argument
+    public class BackupProjectJsonArgumentHandler : ArgumentHandler
     {
-        public BackupProjectJsonArgument()
+        public BackupProjectJsonArgumentHandler()
         {
             Aliases = new string[] { "-backup", "-b" };
             Description = "Create backup file for project.json file with name project.json.bak.";

@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "dotnet-test-mstest": "1.1.1-preview",
-    "f14.AutoVersion": "1.0.0-preview1",
+    "f14.AutoVersion": "1.0.0",
     "Microsoft.NETCore.App": "1.0.1",
     "MSTest.TestFramework": "1.0.3-preview"
   },

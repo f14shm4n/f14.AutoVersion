@@ -9,25 +9,16 @@ using System.Diagnostics;
 namespace f14.AutoVersion.Test
 {
     [TestClass]
-    public class MainTest
+    public class Main
     {
         private Exception SimVersionTemplateArgument(string template)
         {
             Exception e = null;
             try
             {
-                string[] args = { "-t", template };
-                for (int i = 0; i < args.Length; i++)
-                {
-                    string a = args[i];
-                    VersionTemplateArgument vta = new VersionTemplateArgument();
-                    if (vta.HasValue)
-                    {
-                        i += 1;
-                        vta.ParseValue(args[i]);
-                        vta.DoAction();
-                    }
-                }
+                VersionTemplateArgumentHandler vta = new VersionTemplateArgumentHandler();
+                vta.ParseValue(template);
+                vta.DoAction();
             }
             catch (Exception ex)
             {
@@ -56,7 +47,7 @@ namespace f14.AutoVersion.Test
             Exception e = null;
             try
             {
-                BackupProjectJsonArgument bck = new BackupProjectJsonArgument();
+                BackupProjectJsonArgumentHandler bck = new BackupProjectJsonArgumentHandler();
                 bck.DoAction();
             }
             catch (Exception ex)
@@ -70,13 +61,20 @@ namespace f14.AutoVersion.Test
 
         [TestMethod]
         public void TestManyArguments()
-        {
-            //ArgumentList("-b -t 1.0.0-b{0}");
-            foreach(var a in ArgumentList.Registred)
+        {            
+            Exception e = null;
+            try
             {
-                Debug.WriteLine("Type: " + a);
-            }            
-            Assert.IsTrue(true);
+                Program.ParseArguments("-b -t 1.0.0-b{0}");
+                Program.DoActions();
+            }
+            catch (Exception ex)
+            {
+                e = ex;
+            }
+            if (e != null)
+                Debug.WriteLine(e.ToString());
+            Assert.IsNull(e);
         }
     }
 }

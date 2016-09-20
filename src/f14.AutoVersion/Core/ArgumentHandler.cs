@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace f14.AutoVersion.Core
 {
-    public abstract class Argument : IComparable<Argument>
+    public abstract class ArgumentHandler : IComparable<ArgumentHandler>
     {
         public IEnumerable<string> Aliases { get; protected set; }
         public string Description { get; protected set; }
@@ -16,7 +16,7 @@ namespace f14.AutoVersion.Core
         public abstract void ParseValue(string value);
         public abstract void DoAction();
 
-        public int CompareTo(Argument other)
+        public int CompareTo(ArgumentHandler other)
         {
             if (other == null) return 1;
             return Order.CompareTo(other.Order);
